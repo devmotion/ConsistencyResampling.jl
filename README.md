@@ -15,7 +15,7 @@ It is based on the [`Bootstrap.jl`](https://github.com/juliangehring/Bootstrap.j
 Consistency resampling is a resampling technique that generates calibrated predictions from a data set of predictions
 and corresponding labels. First a set of predictions is sampled from the data set with replacement. In a second step
 artificial labels are sampled with the predicted probabilities. This resampling procedure ensures that the predictions
-are calibrated for the artifical labels.
+are calibrated for the artificial labels.
 
 ## Example
 
@@ -39,15 +39,11 @@ in contrast to the other resampling strategies the statistic has to be a functio
 labels. A random number generator can be provided as optional second argument.
 
 ```julia
+using Distances
+using Flux: onehotbatch
+
 b = bootstrap(predictions, labels, ConsistentSampling(100_000)) do x, y
-  s = 0.0
-  @inbounds for j in 1:500
-    yj = y[j]
-    for i in 1:10
-      s += i == yj ? abs(x[i,j] - 1) : abs(x[i,j])
-    end
-  end
-  s / 500
+  totalvariation(x, onehotbatch(y, 1:10)) / 500
 end
 ```
 

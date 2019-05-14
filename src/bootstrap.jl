@@ -42,7 +42,9 @@ function Bootstrap.bootstrap(statistic, rng::AbstractRNG,
         # resample predictions and labels
         for j in 1:nsamples
             idx = rand(sp)
-            resampled_predictions[:, j] .= view(predictions, :, idx)
+            for k in axes(predictions, 1)
+                resampled_predictions[k, j] = predictions[k, idx]
+            end
             resampled_labels[j] = sample(rng, weights[idx])
         end
 
