@@ -4,6 +4,7 @@ Consistency resampling of calibrated predictions.
 
 [![Build Status](https://travis-ci.com/devmotion/ConsistencyResampling.jl.svg?branch=master)](https://travis-ci.com/devmotion/ConsistencyResampling.jl)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/devmotion/ConsistencyResampling.jl?svg=true)](https://ci.appveyor.com/project/devmotion/ConsistencyResampling-jl)
+[![DOI](https://zenodo.org/badge/186521141.svg)](https://zenodo.org/badge/latestdoi/186521141)
 [![Codecov](https://codecov.io/gh/devmotion/ConsistencyResampling.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/devmotion/ConsistencyResampling.jl)
 [![Coveralls](https://coveralls.io/repos/github/devmotion/ConsistencyResampling.jl/badge.svg?branch=master)](https://coveralls.io/github/devmotion/ConsistencyResampling.jl?branch=master)
 
