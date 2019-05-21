@@ -7,7 +7,7 @@ Random.seed!(1234)
     predictions = reshape([1, 0], 2, 1)
     labels = [2]
 
-    b = bootstrap((x, y) -> y, predictions, labels, ConsistentSampling(20))
+    b = bootstrap(last, (predictions, labels), ConsistentSampling(20))
 
     @test data(b) == (predictions, labels)
     @test original(b) == (2,)

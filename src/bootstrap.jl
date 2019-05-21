@@ -1,34 +1,34 @@
-
-function Bootstrap.bootstrap(statistic, predictions::AbstractMatrix{<:Real},
-                             labels::AbstractVector{<:Integer},
+function Bootstrap.bootstrap(statistic,
+                             data::Tuple{<:AbstractMatrix{<:Real},AbstractVector{<:Integer}},
                              sampling::ConsistentSampling)
-    bootstrap(statistic, Random.GLOBAL_RNG, predictions, labels, sampling)
+    bootstrap(statistic, Random.GLOBAL_RNG, data, sampling)
 end
 
 """
-    bootstrap(statistic[, rng::AbstractRNG = Random.GLOBAL_RNG], predictions, labels,
+    bootstrap(statistic[, rng::AbstractRNG = Random.GLOBAL_RNG], data,
               sampling::ConsistentSampling)
 
-Obtain non-parametric bootstrap sample of `statistic` from the `predictions` and
-corresponding `labels` using consistency resampling, i.e., resampling of the labels, with
+Obtain non-parametric bootstrap sample of `statistic` from the `data` set of predictions and
+corresponding labels using consistency resampling, i.e., resampling of the labels, with
 random number generator `rng.`
 """
 function Bootstrap.bootstrap(statistic, rng::AbstractRNG,
-                             predictions::AbstractMatrix{<:Real},
-                             labels::AbstractVector{<:Integer},
+                             data::Tuple{<:AbstractMatrix{<:Real},<:AbstractVector{<:Integer}},
                              sampling::ConsistentSampling)
     # check arguments
+    predictions, labels = data
     nsamples = size(predictions, 2)
     nsamples == length(labels) ||
         throw(DimensionMismatch("number of predictions and labels must be equal"))
 
     # evaluate statistic
-    t0 = tx(statistic(predictions, labels))
+    t0 = tx(statistic(data))
 
     # create caches
     weights = [Weights(w) for w in eachcol(predictions)]
     resampled_predictions = similar(predictions)
     resampled_labels = similar(labels)
+    resampled_data = (resampled_predictions, resampled_labels)
 
     # create sampler
     sp = Random.Sampler(rng, Base.OneTo(nsamples))
@@ -49,10 +49,10 @@ function Bootstrap.bootstrap(statistic, rng::AbstractRNG,
         end
 
         # evaluate statistic
-        for (j, t) in enumerate(tx(statistic(resampled_predictions, resampled_labels)))
+        for (j, t) in enumerate(tx(statistic(resampled_data)))
             t1[j][i] = t
         end
     end
 
-    return NonParametricBootstrapSample(t0, t1, statistic, (predictions, labels), sampling)
+    return NonParametricBootstrapSample(t0, t1, statistic, data, sampling)
 end
