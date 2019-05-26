@@ -1,7 +1,7 @@
 name = "ConsistencyResampling"
 uuid = "4937dc1f-c7a3-5772-9d42-4a8277f2eb51"
 authors = ["David Widmann <dev+git@devmotion.de>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 Bootstrap = "e28b5b4c-05e8-5b66-bc03-6f0c0a0a06e0"
