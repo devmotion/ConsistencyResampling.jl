@@ -21,8 +21,8 @@ are calibrated for the artificial labels.
 ## Example
 
 The predictions have to be provided as a matrix of size `(m, n)`, in which each of the `n` columns corresponds to
-one normalized prediction of the probabilities of the labels `1,…,m`. The corresponding labels have to be provided
-as a vector of length `n`, in which every element is from the set `1,…,m`.
+predicted probabilities of the labels `1,…,m`. The corresponding labels have to be provided as a vector of length `n`,
+in which every element is from the set `1,…,m`.
 
 ```julia
 predictions = rand(10, 500)
