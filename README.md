@@ -20,30 +20,26 @@ are calibrated for the artificial labels.
 
 ## Example
 
-Since `ConsistencyResampling.jl` extends `Bootstrap.jl`, you have to load both packages.
-
-```julia
-using ConsistencyResampling, Bootstrap
-```
-
 The predictions have to be provided as a matrix of size `(m, n)`, in which each of the `n` columns corresponds to
-one (possibly unnormalized) prediction of the probabilities of the labels `1,…,m`. The corresponding labels
-have to be provided as a vector of length `n`, in which every element is from the set `1,…,m`.
+one normalized prediction of the probabilities of the labels `1,…,m`. The corresponding labels have to be provided
+as a vector of length `n`, in which every element is from the set `1,…,m`.
 
 ```julia
 predictions = rand(10, 500)
+predictions ./= sum(predictions, dims=1)
+
 labels = rand(1:10, 500)
 ```
 
-Consistency resampling is performed similar to the other bootstrapping approaches in `Bootstrap.jl`. However,
-in contrast to the other resampling strategies the statistic has to be a function of both predictions and
-labels. A random number generator can be provided as optional second argument.
+Consistency resampling is performed similar to the other bootstrapping approaches in `Bootstrap.jl`. A random number
+generator can be provided as optional argument.
 
 ```julia
+using ConsistencyResampling
 using Distances
 using Flux: onehotbatch
 
-b = bootstrap(predictions, labels, ConsistentSampling(100_000)) do x, y
+b = bootstrap((predictions, labels), ConsistentSampling(100_000)) do (x, y)
   totalvariation(x, onehotbatch(y, 1:10)) / 500
 end
 ```

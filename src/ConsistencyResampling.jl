@@ -6,9 +6,10 @@ using StatsBase
 
 using Random
 
-export ConsistentSampling
+import Bootstrap: bootstrap
 
-include("type.jl")
+export bootstrap, ConsistentSampling
+
 include("bootstrap.jl")
 include("utils.jl")
 
