@@ -25,9 +25,9 @@ predicted probabilities of the labels `1,…,m`. The corresponding labels have t
 in which every element is from the set `1,…,m`.
 
 ```julia
-predictions = rand(10, 500)
-predictions ./= sum(predictions, dims=1)
+using Distributions
 
+predictions = rand(Dirichlet(10, 1), 500)
 labels = rand(1:10, 500)
 ```
 
