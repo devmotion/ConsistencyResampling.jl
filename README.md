@@ -2,10 +2,10 @@
 
 Consistency resampling of calibrated predictions.
 
-[![Build Status](https://github.com/devmotion/ConsistencyResampling.jl/workflows/CI/badge.svg?branch=master)](https://github.com/devmotion/ConsistencyResampling.jl/actions/workflows/CI.yml?query=branch%3Amaster)
+[![Build Status](https://github.com/devmotion/ConsistencyResampling.jl/workflows/CI/badge.svg?branch=main)](https://github.com/devmotion/ConsistencyResampling.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![DOI](https://zenodo.org/badge/186521141.svg)](https://zenodo.org/badge/latestdoi/186521141)
-[![Codecov](https://codecov.io/gh/devmotion/ConsistencyResampling.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/devmotion/ConsistencyResampling.jl)
-[![Coveralls](https://coveralls.io/repos/github/devmotion/ConsistencyResampling.jl/badge.svg?branch=master)](https://coveralls.io/github/devmotion/ConsistencyResampling.jl?branch=master)
+[![Codecov](https://codecov.io/gh/devmotion/ConsistencyResampling.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/devmotion/ConsistencyResampling.jl)
+[![Coveralls](https://coveralls.io/repos/github/devmotion/ConsistencyResampling.jl/badge.svg?branch=main)](https://coveralls.io/github/devmotion/ConsistencyResampling.jl?branch=main)
 
 ## Overview
 
