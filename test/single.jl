@@ -23,7 +23,7 @@
             @test all(first(s) in probs for s in samples)
 
             for prob in probs
-                @test count(s -> first(s) == prob, samples) ≈ 10_000 atol = 250
+                @test count(s -> first(s) == prob, samples) ≈ 10_000 atol = 300
                 @test mean(t for (p, t) in samples if p == prob) ≈ prob atol = 2e-2
             end
         end
@@ -59,7 +59,7 @@
             @test all(1 ≤ last(s) ≤ 5 for s in samples)
 
             for prediction in predictions
-                @test count(s -> first(s) == prediction, samples) ≈ 10_000 atol = 250
+                @test count(s -> first(s) == prediction, samples) ≈ 10_000 atol = 300
                 @test proportions([t for (p, t) in samples if p == prediction], 1:5) ≈ prediction atol =
                     2e-2
             end
@@ -90,7 +90,7 @@
             @test all(first(s) in predictions for s in samples)
 
             for prediction in predictions
-                @test count(s -> first(s) == prediction, samples) ≈ 10_000 atol = 250
+                @test count(s -> first(s) == prediction, samples) ≈ 10_000 atol = 300
                 @test mean(t for (p, t) in samples if p == prediction) ≈ mean(prediction) atol =
                     2e-2
                 @test std(t for (p, t) in samples if p == prediction) ≈ std(prediction) atol =
