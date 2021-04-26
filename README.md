@@ -2,49 +2,13 @@
 
 Consistency resampling of calibrated predictions.
 
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://devmotion.github.io/ConsistencyResampling.jl/stable)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://devmotion.github.io/ConsistencyResampling.jl/dev)
 [![Build Status](https://github.com/devmotion/ConsistencyResampling.jl/workflows/CI/badge.svg?branch=main)](https://github.com/devmotion/ConsistencyResampling.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![DOI](https://zenodo.org/badge/186521141.svg)](https://zenodo.org/badge/latestdoi/186521141)
 [![Codecov](https://codecov.io/gh/devmotion/ConsistencyResampling.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/devmotion/ConsistencyResampling.jl)
 [![Coveralls](https://coveralls.io/repos/github/devmotion/ConsistencyResampling.jl/badge.svg?branch=main)](https://coveralls.io/github/devmotion/ConsistencyResampling.jl?branch=main)
-
-## Overview
-
-This package implements consistency resampling in the Julia language, as described by [Bröcker and Smith (2007)](https://doi.org/10.1175/WAF993.1).
-It is based on the [`Bootstrap.jl`](https://github.com/juliangehring/Bootstrap.jl) package for statistical bootstrapping in Julia.
-
-Consistency resampling is a resampling technique that generates calibrated predictions from a data set of predictions
-and corresponding labels. First a set of predictions is sampled from the data set with replacement. In a second step
-artificial labels are sampled with the predicted probabilities. This resampling procedure ensures that the predictions
-are calibrated for the artificial labels.
-
-## Example
-
-The predictions have to be provided as a matrix of size `(m, n)`, in which each of the `n` columns corresponds to
-predicted probabilities of the labels `1,…,m`. The corresponding labels have to be provided as a vector of length `n`,
-in which every element is from the set `1,…,m`.
-
-```julia
-using Distributions
-
-predictions = rand(Dirichlet(10, 1), 500)
-labels = rand(1:10, 500)
-```
-
-Consistency resampling is performed similar to the other bootstrapping approaches in `Bootstrap.jl`. A random number
-generator can be provided as optional argument.
-
-```julia
-using ConsistencyResampling
-using Distances
-using Flux: onehotbatch
-
-b = bootstrap((predictions, labels), ConsistentSampling(100_000)) do (x, y)
-  totalvariation(x, onehotbatch(y, 1:10)) / 500
-end
-```
-
-The bootstrapped samples can be explored and used for estimation of confidence intervals, as explained
-in the documentation of `Bootstrap.jl`.
+[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 
 ## References
 
