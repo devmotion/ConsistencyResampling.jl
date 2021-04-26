@@ -1,16 +1,13 @@
 module ConsistencyResampling
 
-using Bootstrap
-using Bootstrap: BootstrapSampling
-using StatsBase
+using StatsBase: StatsBase
+using Random: Random
 
-using Random
+export Consistent
 
-import Bootstrap: bootstrap
-
-export bootstrap, ConsistentSampling
-
-include("bootstrap.jl")
-include("utils.jl")
+include("alias.jl")
+include("consistent.jl")
+include("many.jl")
+include("single.jl")
 
 end # module
