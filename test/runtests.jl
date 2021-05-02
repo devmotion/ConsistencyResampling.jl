@@ -17,10 +17,6 @@ using Test
 
 Random.seed!(1234)
 
-# Distributions.jl does not implement the Random API
-Random.Sampler(::Type{<:AbstractRNG}, s::Sampleable, ::Val{1}) = s
-Random.Sampler(::Type{<:AbstractRNG}, s::Sampleable, ::Val{Inf}) = sampler(s)
-
 @testset "ConsistencyResampling" begin
     @testset "Alias sampler" begin
         include("alias.jl")

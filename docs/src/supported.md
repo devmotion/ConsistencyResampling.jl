@@ -92,16 +92,6 @@ predictions = map(Normal, randn(100), rand(100))
 nothing #hide
 ```
 
-Unfortunately, currently Distributions does not define `Random.Sampler` and therefore we have
-to implement it to be able to perform consistency resampling:
-
-```@example distribution
-using Random
-
-Random.Sampler(::Type{<:AbstractRNG}, s::Sampleable, ::Val{1}) = s
-Random.Sampler(::Type{<:AbstractRNG}, s::Sampleable, ::Val{Inf}) = sampler(s)
-```
-
 Consistency resampling yields a randomly sampled prediction and a sample from it.
 
 ```@example distribution
@@ -111,3 +101,15 @@ prediction, target = rand(Consistent(predictions))
 ```@example distribution
 prediction in predictions
 ```
+
+!!! note
+    This example requires Distributions >= 0.25.0. Older versions of Distributions did not
+    define `Random.Sampler` and therefore you have to implement it yourself to be able to
+    perform consistency resampling:
+    ```julia
+    using Distributions
+    using Random
+
+    Random.Sampler(::Type{<:AbstractRNG}, s::Sampleable, ::Val{1}) = s
+    Random.Sampler(::Type{<:AbstractRNG}, s::Sampleable, ::Val{Inf}) = sampler(s)
+    ```
