@@ -10,3 +10,14 @@ StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 [compat]
 StatsBase = "0.32, 0.33, 0.34"
 julia = "1"
+
+[extras]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+StructArrays = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Aqua", "Distributions", "Documenter", "LinearAlgebra", "StructArrays", "Test"]
