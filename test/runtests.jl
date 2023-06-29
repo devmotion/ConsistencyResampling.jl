@@ -1,13 +1,5 @@
-using Pkg
-
-# Activate test environment on older Julia versions
-@static if VERSION < v"1.2"
-    Pkg.activate(@__DIR__)
-    Pkg.develop(PackageSpec(; path=dirname(@__DIR__)))
-    Pkg.instantiate()
-end
-
 using ConsistencyResampling
+using Aqua
 using Distributions
 using Documenter
 using LinearAlgebra
@@ -18,6 +10,9 @@ using Test
 Random.seed!(1234)
 
 @testset "ConsistencyResampling" begin
+    @testset "Aqua tests" begin
+        include("aqua.jl")
+    end
     @testset "Alias sampler" begin
         include("alias.jl")
     end
