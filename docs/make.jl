@@ -1,10 +1,4 @@
 using Documenter
-
-# Print `@debug` statements (https://github.com/JuliaDocs/Documenter.jl/issues/955)
-if haskey(ENV, "GITHUB_ACTIONS")
-    ENV["JULIA_DEBUG"] = "Documenter"
-end
-
 using ConsistencyResampling
 
 DocMeta.setdocmeta!(
@@ -22,7 +16,6 @@ makedocs(;
         assets=String[],
     ),
     pages=["Home" => "index.md", "supported.md"],
-    strict=true,
     checkdocs=:exports,
 )
 
