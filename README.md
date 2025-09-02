@@ -4,7 +4,7 @@ Consistency resampling of calibrated predictions.
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://devmotion.github.io/ConsistencyResampling.jl/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://devmotion.github.io/ConsistencyResampling.jl/dev)
-[![Build Status](https://github.com/devmotion/ConsistencyResampling.jl/workflows/CI/badge.svg?branch=main)](https://github.com/devmotion/ConsistencyResampling.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/devmotion/ConsistencyResampling.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/devmotion/ConsistencyResampling.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![DOI](https://zenodo.org/badge/186521141.svg)](https://zenodo.org/badge/latestdoi/186521141)
 [![Codecov](https://codecov.io/gh/devmotion/ConsistencyResampling.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/devmotion/ConsistencyResampling.jl)
 [![Coveralls](https://coveralls.io/repos/github/devmotion/ConsistencyResampling.jl/badge.svg?branch=main)](https://coveralls.io/github/devmotion/ConsistencyResampling.jl?branch=main)
